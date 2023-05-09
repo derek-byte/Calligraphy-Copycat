@@ -1,3 +1,5 @@
+import g4p_controls.*;
+
 //Calligraphy Copycat by Derek, Isabela & Grace
 
 color[][] cells;  
@@ -20,7 +22,18 @@ void setup() {
 
 void draw() {
   background(0);   
+  
+  //TITLE PAGE
   noStroke();
+  fill(148, 148, 156);
+  textSize(40);
+  fill(0);
+  textAlign(CENTER);
+  text("Calligraphy Copycat", width/2, 150 );
+  textSize(30);
+  
+  //CREATE GUI
+  createGUI();
 
   cellsNext = new color[n][n]; 
   for (int i = 0; i < n; i++ ) {
@@ -34,6 +47,5 @@ void draw() {
       setCellValues(i, j);
     }
   }
-
   copyNextGenerationToCurrentGeneration();
 }
