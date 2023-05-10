@@ -17,17 +17,25 @@
 public void studentMode(GButton source, GEvent event) { //_CODE_:studentButtin:712179:
   println("button1 - GButton >> GEvent." + event + " @ " + millis());
   board.isDrawing = true;
-  fill(0);
+  background(0);
 } //_CODE_:studentButtin:712179:
 
 public void teacherMode(GButton source, GEvent event) { //_CODE_:teacherButton:875382:
   println("button2 - GButton >> GEvent." + event + " @ " + millis());
   board.isDrawing = true;
-  fill(0);
+  background(0);
 } //_CODE_:teacherButton:875382:
 
 public void instructionButtonPressed(GButton source, GEvent event) { //_CODE_:instructionButton:227920:
   println("instructionButton - GButton >> GEvent." + event + " @ " + millis());
+  if(title == true) {
+  instructionsPage();
+  title = false;
+  }
+  else if(title == false) {
+   loop();
+   title = true;
+  }
 } //_CODE_:instructionButton:227920:
 
 

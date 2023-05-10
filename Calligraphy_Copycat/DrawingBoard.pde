@@ -7,7 +7,8 @@ class DrawingBoard {
   
   color markerColor;
   boolean isDrawing;
-
+  boolean uploadData;
+  
   DrawingBoard() {
     this.n = 100;    
     this.cells = new color[this.n][this.n];         
@@ -16,6 +17,7 @@ class DrawingBoard {
     this.cellSizeY = 500.0/this.n;
     this.markerColor = color(255);
     this.isDrawing = false;
+    this.uploadData = false;
   }
   
   void clearDrawingBoard() {
@@ -49,5 +51,13 @@ class DrawingBoard {
     try {
       this.cellsNext[x][y] = this.cells[x][y];
     } catch (IndexOutOfBoundsException e) {}
+  }
+  
+  void uploadData() {
+    for (int i = 0; i < this.n; i++) 
+      for (int j = 0; j < this.n; j++) {
+        printWriter.println( i + "," + j );
+      }
+    printWriter.close();
   }
 }
