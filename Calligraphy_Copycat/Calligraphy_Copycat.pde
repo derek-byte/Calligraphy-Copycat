@@ -21,13 +21,6 @@ void setup() {
 void draw() {
   background(0);   
   
-  //TITLE PAGE
-  noStroke();
-  textSize(40);
-  fill(255);
-  textAlign(CENTER);
-  text("Calligraphy Copycat", width/2, 150 );
-  textSize(30);
   titlePage();
   
   if (board.isDrawing) {
