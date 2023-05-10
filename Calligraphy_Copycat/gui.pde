@@ -16,10 +16,12 @@
 
 public void studentMode(GButton source, GEvent event) { //_CODE_:studentButtin:712179:
   println("button1 - GButton >> GEvent." + event + " @ " + millis());
+  isDrawing = true;
 } //_CODE_:studentButtin:712179:
 
 public void teacherMode(GButton source, GEvent event) { //_CODE_:teacherButton:875382:
   println("button2 - GButton >> GEvent." + event + " @ " + millis());
+  isDrawing = true;
 } //_CODE_:teacherButton:875382:
 
 
