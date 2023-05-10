@@ -2,14 +2,10 @@ import g4p_controls.*;
 
 //Calligraphy Copycat by Derek, Isabela & Grace
 
-<<<<<<< HEAD
-DrawingBoard board = new DrawingBoard();
 boolean title = true;
-=======
 DrawingBoard board;
 PrintWriter printWriter;
 PVector[] drawnPoints;
->>>>>>> 5e60992854db49df4364c417a62a866c269147e3
 
 void setup() {
   size(500, 500);
