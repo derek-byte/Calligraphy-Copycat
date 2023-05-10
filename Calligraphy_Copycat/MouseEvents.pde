@@ -1,12 +1,12 @@
 void mouseDragged() {
-  if (isDrawing) {
-    int col = int(mouseX/cellSize);
-    int row = int(mouseY/cellSize);
+  if (board.isDrawing) {
+    int col = int(mouseX/board.cellSize);
+    int row = int(mouseY/board.cellSize);
     
     try {
-      cellsNext[col][row] = markerColor;
+      board.cellsNext[col][row] = board.markerColor;
     } catch (IndexOutOfBoundsException e) {}
     
-    copyNextGenerationToCurrentGeneration();
+    board.copyNextGenerationToCurrentGeneration();
   }
 }

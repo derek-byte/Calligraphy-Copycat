@@ -2,22 +2,10 @@ import g4p_controls.*;
 
 //Calligraphy Copycat by Derek, Isabela & Grace
 
-int n = 100;
-color[][] cells;  
-color[][] cellsNext;
-float cellSize;
-float cellSizeY;
-
-color markerColor = color(255);
-boolean isDrawing = false;
+DrawingBoard board = new DrawingBoard();
 
 void setup() {
   size(500, 500);
-  
-  cellSize = width/n;  
-  cellSizeY = height/n;
-  cells = new color[n][n];         
-  cellsNext = new color[n][n];
 }
 
 void draw() {
@@ -32,9 +20,10 @@ void draw() {
   text("Calligraphy Copycat", width/2, 150 );
   textSize(30);
   
-  //CREATE GUI
-  createGUI();
-  
-  if (isDrawing)
-    updateDrawingBoard();
+  if (board.isDrawing) {
+    board.updateDrawingBoard();
+  } else {
+    //CREATE GUI
+    createGUI();
+  }
 }
