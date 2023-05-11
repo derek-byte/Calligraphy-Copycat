@@ -12,6 +12,8 @@ void setup() {
   
   board = new DrawingBoard();
   printWriter = createWriter("data.txt");
+  
+  createGUI();
 }
 
 void draw() {
@@ -19,11 +21,12 @@ void draw() {
   
   titlePage();
   
+  
   if (board.isDrawing) {
     board.updateDrawingBoard();
   } else {
     //CREATE GUI
-    createGUI();
+    
   }
   
   if (board.uploadData) {
