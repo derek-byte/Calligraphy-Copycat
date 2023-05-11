@@ -60,4 +60,8 @@ class DrawingBoard {
       }
     printWriter.close();
   }
+  
+  void changeColor(color clr) {
+   this.markerColor = clr;
+  }
 }
