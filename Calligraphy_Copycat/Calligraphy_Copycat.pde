@@ -38,10 +38,6 @@ void draw() {
     board.updateDrawingBoard();
     board.showStats();
   } 
-  
-  if (board.uploadData) {
-    board.uploadData();
-  }
 }
 
 void getTxtFile() {

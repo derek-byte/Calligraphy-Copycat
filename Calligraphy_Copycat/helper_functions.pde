@@ -13,5 +13,5 @@ int findOverlappingPixels(PVector[] template, DrawingBoard drawn) {
 }
 
 void handleSubmit() {
-  println("HI");
+  board.uploadData();
 }
