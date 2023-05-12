@@ -40,7 +40,7 @@ void draw() {
   } 
 }
 
-void getTxtFile() {
+PVector[] getTxtFile() {
   printWriter.close();
   
   String[] lines = loadStrings("data.txt");
@@ -58,4 +58,6 @@ void getTxtFile() {
   fill(255,0,0);
   
   printWriter = createWriter("data.txt");
+  
+  return drawnPoints;
 }
