@@ -89,7 +89,38 @@ public void letterSelected(GDropList source, GEvent event) { //_CODE_:letterList
 } //_CODE_:letterList:635450:
 
 public void colourSelected(GDropList source, GEvent event) { //_CODE_:colourList:944983:
-  println("colourList - GDropList >> GEvent." + event + " @ " + millis());
+  String c = colourList.getSelectedText();
+  println(c);
+  if(c.equals("red")) {
+     board.markerColor = color(255, 0, 0); 
+  }
+   else if(c.equals("green")) {
+     board.markerColor = color(0, 255, 0); 
+  }
+   else if(c.equals("blue")) {
+     board.markerColor = color(0, 0, 255); 
+  }
+   else if(c.equals("grey")) {
+     board.markerColor = color(150, 150, 150); 
+  }
+   else if(c.equals("purple")) {
+     board.markerColor = color(212, 0, 255); 
+  }
+   else if(c == "pink") {
+     board.markerColor = color(255, 0, 200); 
+  }
+   else if(c.equals("orange")) {
+     board.markerColor = color(255, 170, 0); 
+  }
+   else if(c.equals("yellow")) {
+     board.markerColor = color(255, 230, 0); 
+  }
+   else if(c.equals("teal")) {
+     board.markerColor = color(0, 255, 195); 
+  }
+   else if (c.equals("white")) {
+     board.markerColor = color(0, 0, 0); 
+  }
 } //_CODE_:colourList:944983:
 
 public void clearButtonPressed(GButton source, GEvent event) { //_CODE_:clearButton:330661:
