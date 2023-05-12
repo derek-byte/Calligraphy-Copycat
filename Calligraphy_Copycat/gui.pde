@@ -85,7 +85,7 @@ synchronized public void win_draw1() { //_CODE_:studentWindow:951950:
 } //_CODE_:studentWindow:951950:
 
 public void letterSelected(GDropList source, GEvent event) { //_CODE_:letterList:635450:
-  println("dropList1 - GDropList >> GEvent." + event + " @ " + millis());
+  board.letter = letterList.getSelectedText();
 } //_CODE_:letterList:635450:
 
 public void colourSelected(GDropList source, GEvent event) { //_CODE_:colourList:944983:
@@ -128,7 +128,7 @@ synchronized public void win_draw2() { //_CODE_:teacherWindow:386192:
 } //_CODE_:teacherWindow:386192:
 
 public void letterTeacherSelect(GDropList source, GEvent event) { //_CODE_:letterListTeach:826108:
-  println("letterListTeach - GDropList >> GEvent." + event + " @ " + millis());
+  board.letter = letterListTeach.getSelectedText();
 } //_CODE_:letterListTeach:826108:
 
 public void teacherClearedPressed(GButton source, GEvent event) { //_CODE_:teacherClear:447221:

@@ -9,6 +9,8 @@ class DrawingBoard {
   boolean isDrawing;
   boolean uploadData;
   
+  String letter;
+  
   DrawingBoard() {
     this.n = 100;    
     this.cells = new color[this.n][this.n];         
