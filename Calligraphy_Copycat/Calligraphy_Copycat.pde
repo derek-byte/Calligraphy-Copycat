@@ -18,8 +18,7 @@ boolean title = true;
 DrawingBoard board;
 PrintWriter printWriter;
 PVector[] drawnPoints;
-
-
+String userType;
 
 void setup() {
   size(500, 500);

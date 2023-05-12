@@ -11,3 +11,7 @@ int findOverlappingPixels(PVector[] template, DrawingBoard drawn) {
  
   return overlap;
 }
+
+void handleSubmit() {
+  println("HI");
+}

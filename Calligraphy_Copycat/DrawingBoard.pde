@@ -22,10 +22,12 @@ class DrawingBoard {
   
   void clearDrawingBoard() {
     this.cellsNext = new color[this.n][this.n]; 
+    println("CLEAR");
+    copyNextGenerationToCurrentGeneration();
   }
   
   void updateDrawingBoard() {
-    clearDrawingBoard();
+    this.cellsNext = new color[this.n][this.n];
     for (int i = 0; i < this.n; i++ ) {
       for (int j = 0; j < this.n; j++) {
         float x = i*this.cellSizeY; 
@@ -71,7 +73,7 @@ class DrawingBoard {
     textSize(13);
     text("Calligraphy Copycat", 10, 20 );
     textSize(12);
-    text("Mode:", 10, 40 );
+    text("Mode:" + userType, 10, 40 );
     text("Score:", 10, 60 );
   }
 }

@@ -37,6 +37,7 @@ public void studentMode(GButton source, GEvent event) { //_CODE_:studentButton:7
   board.isDrawing = true;
   win_draw1();
   deleteHomePage();
+  userType = "Student";
   background(0);
 } //_CODE_:studentButton:712179:
 
@@ -45,6 +46,7 @@ public void teacherMode(GButton source, GEvent event) { //_CODE_:teacherButton:8
   board.isDrawing = true;
   win_draw2();
   deleteHomePage();
+  userType = "Teacher";
   background(0);
 } //_CODE_:teacherButton:875382:
 
@@ -92,10 +94,12 @@ public void colourSelected(GDropList source, GEvent event) { //_CODE_:colourList
 
 public void clearButtonPressed(GButton source, GEvent event) { //_CODE_:clearButton:330661:
   println("clearButton - GButton >> GEvent." + event + " @ " + millis());
+  board.clearDrawingBoard();
 } //_CODE_:clearButton:330661:
 
 public void submitButtonPressed(GButton source, GEvent event) { //_CODE_:Submit:288597:
   println("Submit - GButton >> GEvent." + event + " @ " + millis());
+  handleSubmit();
 } //_CODE_:Submit:288597:
 
 public void backToMainPressed(GButton source, GEvent event) { //_CODE_:backToMain:279625:
