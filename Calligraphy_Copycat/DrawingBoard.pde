@@ -64,4 +64,14 @@ class DrawingBoard {
   void changeColor(color clr) {
    this.markerColor = clr;
   }
+  
+  void showStats() {
+    fill(250);
+    textAlign(LEFT);
+    textSize(13);
+    text("Calligraphy Copycat", 10, 20 );
+    textSize(12);
+    text("Mode:", 10, 40 );
+    text("Score:", 10, 60 );
+  }
 }

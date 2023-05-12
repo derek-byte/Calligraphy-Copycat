@@ -1,5 +1,5 @@
 void mouseDragged() {
-  if (board.isDrawing) {
+  if (board.isDrawing && title) {
     int col = int(mouseX/board.cellSize);
     int row = int(mouseY/board.cellSize);
     

@@ -37,6 +37,7 @@ void draw() {
    
   if (board.isDrawing) {
     board.updateDrawingBoard();
+    board.showStats();
   } 
   
   if (board.uploadData) {
