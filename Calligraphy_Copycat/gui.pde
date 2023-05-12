@@ -133,6 +133,7 @@ public void letterTeacherSelect(GDropList source, GEvent event) { //_CODE_:lette
 
 public void teacherClearedPressed(GButton source, GEvent event) { //_CODE_:teacherClear:447221:
   println("teacherClear - GButton >> GEvent." + event + " @ " + millis());
+  board.clearDrawingBoard();
 } //_CODE_:teacherClear:447221:
 
 public void makeTemplatePressed(GButton source, GEvent event) { //_CODE_:makeTemplate:495839:
