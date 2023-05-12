@@ -19,6 +19,8 @@ DrawingBoard board;
 PrintWriter printWriter;
 PVector[] drawnPoints;
 
+
+
 void setup() {
   size(500, 500);
   
@@ -32,14 +34,10 @@ void draw() {
   background(0);   
   
   titlePage();
-  
-  
+   
   if (board.isDrawing) {
     board.updateDrawingBoard();
-  } else {
-    //CREATE GUI
-    
-  }
+  } 
   
   if (board.uploadData) {
     board.uploadData();
