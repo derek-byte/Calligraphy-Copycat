@@ -10,6 +10,7 @@ class DrawingBoard {
   boolean uploadData;
   
   String letter;
+  float maxScore = 0;
   
   DrawingBoard() {
     this.n = 100;    
@@ -21,6 +22,7 @@ class DrawingBoard {
     this.isDrawing = false;
     this.uploadData = false;
     this.letter = "A";
+    this.maxScore = 0;
   }
   
   void clearDrawingBoard() {
@@ -92,6 +94,8 @@ class DrawingBoard {
     text("Calligraphy Copycat", 10, 20 );
     textSize(12);
     text("Mode:" + userType, 10, 40 );
-    text("Score:", 10, 60 );
+    
+    if (userType.equals("Student"))
+      text("Score: " + this.maxScore, 10, 60 );
   }
 }
