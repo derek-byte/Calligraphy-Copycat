@@ -20,12 +20,21 @@ class DrawingBoard {
     this.markerColor = color(255);
     this.isDrawing = false;
     this.uploadData = false;
+    this.letter = "A";
   }
   
   void clearDrawingBoard() {
-    this.cellsNext = new color[this.n][this.n]; 
-    println("CLEAR");
+    setInitialValues();
     copyNextGenerationToCurrentGeneration();
+  }
+  
+  void setInitialValues() {
+    for (int i = 0; i < this.n; i++ ) {
+      for (int j = 0; j < this.n; j++) {
+        cells[i][j] = black;
+        cellsNext[i][j] = black;
+      }
+    }
   }
   
   void updateDrawingBoard() {
@@ -58,9 +67,16 @@ class DrawingBoard {
   }
   
   void uploadData() {
+    print("UPLOADING DATA");
+    //printWriter.flush();
+    print(userType+"/"+this.letter+".txt");
+    printWriter = createWriter(userType+"/"+this.letter+".txt");
     for (int i = 0; i < this.n; i++) 
       for (int j = 0; j < this.n; j++) {
-        printWriter.println( i + "," + j );
+        if (cells[i][j] != black) {
+          print("HI");
+          printWriter.println( i + "," + j );
+        }
       }
     printWriter.close();
   }
