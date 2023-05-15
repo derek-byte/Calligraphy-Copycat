@@ -10,6 +10,7 @@ class DrawingBoard {
   boolean uploadData;
   
   String letter;
+  float maxScore = 0;
   
   DrawingBoard() {
     this.n = 100;    
@@ -20,12 +21,22 @@ class DrawingBoard {
     this.markerColor = color(255);
     this.isDrawing = false;
     this.uploadData = false;
+    this.letter = "A";
+    this.maxScore = 0;
   }
   
   void clearDrawingBoard() {
-    this.cellsNext = new color[this.n][this.n]; 
-    println("CLEAR");
+    setInitialValues();
     copyNextGenerationToCurrentGeneration();
+  }
+  
+  void setInitialValues() {
+    for (int i = 0; i < this.n; i++ ) {
+      for (int j = 0; j < this.n; j++) {
+        cells[i][j] = black;
+        cellsNext[i][j] = black;
+      }
+    }
   }
   
   void updateDrawingBoard() {
@@ -58,9 +69,16 @@ class DrawingBoard {
   }
   
   void uploadData() {
+    print("UPLOADING DATA");
+    //printWriter.flush();
+    print(userType+"/"+this.letter+".txt");
+    printWriter = createWriter(userType+"/"+this.letter+".txt");
     for (int i = 0; i < this.n; i++) 
       for (int j = 0; j < this.n; j++) {
-        printWriter.println( i + "," + j );
+        if (cells[i][j] != black) {
+          print("HI");
+          printWriter.println( i + "," + j );
+        }
       }
     printWriter.close();
   }
@@ -76,6 +94,8 @@ class DrawingBoard {
     text("Calligraphy Copycat", 10, 20 );
     textSize(12);
     text("Mode:" + userType, 10, 40 );
-    text("Score:", 10, 60 );
+    
+    if (userType.equals("Student"))
+      text("Score: " + this.maxScore, 10, 60 );
   }
 }

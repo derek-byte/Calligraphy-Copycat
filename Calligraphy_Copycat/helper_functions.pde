@@ -1,18 +1,21 @@
-
-
-float findMaxScore(String letter) {
-  PVector[] template =
-  float score = (overlap(letter) / template.length) * 100;
+float findMaxScore(String letter /*String letter*/) {
+  PVector[] template = getTxtFile("Teacher/"+letter+".txt");
+  PVector[] studentDrawing = getTxtFile("Student/"+letter+".txt");
+  
+  // Need to go through drawing board arr
+  int maxOverlappingPixels = 0;
+  // Nested for loops:
+  findOverlappingPixels(template, studentDrawing);
+  
+  float score = (maxOverlappingPixels / template.length) * 100;
   return score;
 }
 
-int findOverlappingPixels(String letter) {
+int findOverlappingPixels(PVector[] template, PVector[] studentDrawing/*String letter*/) {
   int overlap = 0;
-  PVector[] template =
-  PVector[] studentDrawing =
   for (int i = 0; i < template.length; i++) {
     for (int j = 0; j < studentDrawing.length; j++) {
-      if (studentDrawing.j = template.i) {
+      if (studentDrawing[j] == template[i]) {
         overlap++;
       }
     }
@@ -22,4 +25,24 @@ int findOverlappingPixels(String letter) {
 
 void handleSubmit() {
   board.uploadData();
+  //board.maxScore = findMaxScore(board.letter);
+}
+
+PVector[] getTxtFile(String file) {
+  
+  String[] lines = loadStrings(file);
+  int numPoints = lines.length;
+  
+  drawnPoints = new PVector[ numPoints ];
+  
+  for (int i=0; i < numPoints; i++ ) {
+    String[] xyVals = lines[i].split(",");
+    drawnPoints[i] = new PVector();
+    drawnPoints[i].x = int(xyVals[0]);
+    drawnPoints[i].y = int(xyVals[1]);
+  }
+  
+  fill(255,0,0);
+    
+  return drawnPoints;
 }

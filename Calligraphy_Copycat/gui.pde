@@ -136,6 +136,7 @@ public void submitButtonPressed(GButton source, GEvent event) { //_CODE_:Submit:
 public void backToMainPressed(GButton source, GEvent event) { //_CODE_:backToMain:279625:
   createHomePage();
   board.isDrawing = false;
+  board.clearDrawingBoard();
 } //_CODE_:backToMain:279625:
 
 synchronized public void win_draw2() { //_CODE_:teacherWindow:386192:
@@ -169,11 +170,13 @@ public void teacherClearedPressed(GButton source, GEvent event) { //_CODE_:teach
 
 public void makeTemplatePressed(GButton source, GEvent event) { //_CODE_:makeTemplate:495839:
   println("makeTemplate - GButton >> GEvent." + event + " @ " + millis());
+  board.uploadData();
 } //_CODE_:makeTemplate:495839:
 
 public void backToMainTwoPressed(GButton source, GEvent event) { //_CODE_:backToMainTwo:517947:
   createHomePage();
   board.isDrawing = false;
+  board.clearDrawingBoard();
 } //_CODE_:backToMainTwo:517947:
 
 
