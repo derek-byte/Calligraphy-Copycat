@@ -2,10 +2,15 @@ float findMaxScore(String letter /*String letter*/) {
   PVector[] template = getTxtFile("Teacher/"+letter+".txt");
   PVector[] studentDrawing = getTxtFile("Student/"+letter+".txt");
   
-  // Need to go through drawing board arr
   int maxOverlappingPixels = 0;
-  // Nested for loops:
-  findOverlappingPixels(template, studentDrawing);
+  for (int i=0; i < board.n-template.length; i++) {
+    for (int j=0; j < board.n-template.length; j++) {
+      int overlappingPixels = findOverlappingPixels(template, studentDrawing);
+      if (overlappingPixels > maxOverlappingPixels) {
+        maxOverlappingPixels = overlappingPixels;
+      }
+    }
+  }
   
   float score = (maxOverlappingPixels / template.length) * 100;
   return score;
