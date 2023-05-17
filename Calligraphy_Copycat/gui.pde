@@ -38,6 +38,7 @@ public void studentMode(GButton source, GEvent event) { //_CODE_:studentButton:7
   win_draw1();
   deleteHomePage();
   userType = "Student";
+  board.showTracer();
   background(0);
 } //_CODE_:studentButton:712179:
 

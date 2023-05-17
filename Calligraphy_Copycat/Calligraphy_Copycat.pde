@@ -14,6 +14,7 @@ color pink = color(255, 0, 200);
 color orange = color(255, 170, 0);
 color yellow = color(255, 230, 0);
 color teal = color(0, 255, 195);
+color tracerGrey = color(155);
 
 boolean title = true;
 DrawingBoard board;

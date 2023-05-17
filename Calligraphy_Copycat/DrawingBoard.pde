@@ -8,6 +8,7 @@ class DrawingBoard {
   color markerColor;
   boolean isDrawing;
   boolean uploadData;
+  boolean showTracer;
   
   String letter;
   float maxScore = 0;
@@ -23,6 +24,7 @@ class DrawingBoard {
     this.uploadData = false;
     this.letter = "A";
     this.maxScore = 0;
+    this.showTracer = true;
   }
   
   void clearDrawingBoard() {
@@ -39,7 +41,21 @@ class DrawingBoard {
     }
   }
   
+  void showTracer() {
+    PVector[] teacherArr = getTxtFile("Teacher/"+this.letter+".txt");
+    
+    PVector midPoint = getCenterObject(teacherArr);
+    int xShift = int(midPoint.x)-int(n/2);
+    int yShift = int(midPoint.y) - int(n/2);
+    
+    for (int i=0; i<teacherArr.length; i++) {
+      cells[int(teacherArr[i].x - xShift)][int(teacherArr[i].y - yShift)] = tracerGrey;
+      cellsNext[int(teacherArr[i].x - xShift)][int(teacherArr[i].y - yShift)] = tracerGrey;
+    }
+  }
+  
   void updateDrawingBoard() {
+    
     this.cellsNext = new color[this.n][this.n];
     for (int i = 0; i < this.n; i++ ) {
       for (int j = 0; j < this.n; j++) {
@@ -97,5 +113,9 @@ class DrawingBoard {
     
     if (userType.equals("Student"))
       text("Score: " + this.maxScore, 10, 60 );
+  }
+  
+  void markerOutline() {
+  
   }
 }

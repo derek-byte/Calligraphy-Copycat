@@ -51,3 +51,38 @@ PVector[] getTxtFile(String file) {
     
   return drawnPoints;
 }
+
+PVector getCenterObject(PVector[] arr) {
+  float minYCoord = arr[0].y;
+  float minXCoord = arr[0].x;
+  float maxYCoord = arr[0].y;
+  float maxXCoord = arr[0].x;
+  
+  for (int i=0; i<arr.length; i++) {
+    if (arr[i].x < minXCoord) {
+      minXCoord = arr[i].x;
+    } else if (arr[i].x > maxXCoord) {
+      maxXCoord = arr[i].x;
+    }
+    if (arr[i].y < minYCoord) {
+      minYCoord = arr[i].y;
+    } else if (arr[i].y > maxYCoord) {
+      maxYCoord = arr[i].y;
+    }
+  }
+  
+  return new PVector(int((minXCoord+maxXCoord)/2), int((minYCoord+maxYCoord)/2));
+  
+  // Use this for both the teacher and student class. 
+  //return 
+  
+  //int xRange = int(maxXCoord - minXCoord);
+  //int yRange = int(maxYCoord - minYCoord);
+  //color[][] teacherArr = new color[xRange][yRange];
+  //for (int i=0; i < xRange; i++) {
+  //  for (int j=0; j < yRange; j++) {
+  //    //teacherA
+  //  }
+  //}
+  
+}
