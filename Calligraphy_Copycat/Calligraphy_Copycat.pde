@@ -29,6 +29,7 @@ String userType;
 void setup() {
   size(500, 500);
   
+  //creates the drawing board
   board = new DrawingBoard();
   board.setInitialValues();
   
@@ -39,7 +40,8 @@ void draw() {
   background(bg);   
   
   titlePage();
-   
+  
+  //updates the drawing board at the frame rate, only in drawing mode
   if (board.isDrawing) {
     board.updateDrawingBoard();
     board.showStats();

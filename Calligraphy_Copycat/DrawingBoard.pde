@@ -1,4 +1,5 @@
 class DrawingBoard {
+  //fields
   int n;
   color[][] cells;  
   color[][] cellsNext;
@@ -13,6 +14,7 @@ class DrawingBoard {
   String letter;
   float maxScore = 0;
   
+  //constructor method
   DrawingBoard() {
     this.n = 100;    
     this.cells = new color[this.n][this.n];         
@@ -27,11 +29,13 @@ class DrawingBoard {
     this.showTracer = true;
   }
   
+  //clears the board, used to update board
   void clearDrawingBoard() {
     setInitialValues();
     copyNextGenerationToCurrentGeneration();
   }
   
+  //creates an initial blank board
   void setInitialValues() {
     for (int i = 0; i < this.n; i++ ) {
       for (int j = 0; j < this.n; j++) {
@@ -41,6 +45,7 @@ class DrawingBoard {
     }
   }
   
+  //shows the letter template on the drawing board
   void showTracer() {
     PVector[] teacherArr = getTxtFile("Teacher/"+this.letter+".txt");
     
@@ -54,6 +59,7 @@ class DrawingBoard {
     }
   }
   
+  //updates the drawing board, called in draw
   void updateDrawingBoard() {
     
     this.cellsNext = new color[this.n][this.n];
@@ -84,6 +90,7 @@ class DrawingBoard {
     } catch (IndexOutOfBoundsException e) {}
   }
   
+  //uploads data to the text files so that we can keep track of specific letter drawings
   void uploadData() {
     print("UPLOADING DATA");
     //printWriter.flush();
@@ -103,6 +110,7 @@ class DrawingBoard {
    this.markerColor = clr;
   }
   
+  //all of the statistics shown in the top left corner
   void showStats() {
     fill(250);
     textAlign(LEFT);

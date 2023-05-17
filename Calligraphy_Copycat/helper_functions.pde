@@ -1,10 +1,11 @@
+//finds the maximum possible overlap for any of the templates
 float findMaxScore(String letter /*String letter*/) {
   PVector[] template = getTxtFile("Teacher/"+letter+".txt");
   PVector[] studentDrawing = getTxtFile("Student/"+letter+".txt");
   
   int maxOverlappingPixels = 0;
-  for (int i=0; i < board.n-template.length; i++) {
-    for (int j=0; j < board.n-template.length; j++) {
+  for (int i = 0; i < board.n-template.length; i++) {
+    for (int j = 0; j < board.n-template.length; j++) {
       int overlappingPixels = findOverlappingPixels(template, studentDrawing);
       if (overlappingPixels > maxOverlappingPixels) {
         maxOverlappingPixels = overlappingPixels;
@@ -16,6 +17,7 @@ float findMaxScore(String letter /*String letter*/) {
   return score;
 }
 
+//finds the overlapping pixels between template and student attempt for a specific letter
 int findOverlappingPixels(PVector[] template, PVector[] studentDrawing/*String letter*/) {
   int overlap = 0;
   for (int i = 0; i < template.length; i++) {
@@ -27,6 +29,10 @@ int findOverlappingPixels(PVector[] template, PVector[] studentDrawing/*String l
   }
   return overlap;
 }
+
+//uses the max score and current overlap to find the actual student score
+
+
 
 void handleSubmit() {
   board.uploadData();
