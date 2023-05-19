@@ -33,8 +33,19 @@ class DrawingBoard {
   void clearDrawingBoard() {
     setInitialValues();
     copyNextGenerationToCurrentGeneration();
+    showTracer();
   }
   
+  void clearTracer() {
+    for (int i=0; i<this.n; i++) {
+      for (int j=0; j<this.n; j++) {
+        if (cells[i][j] == tracerGrey) {
+          cellsNext[i][j] = black;
+        }
+      }
+    }
+  }
+    
   //creates an initial blank board
   void setInitialValues() {
     for (int i = 0; i < this.n; i++ ) {
