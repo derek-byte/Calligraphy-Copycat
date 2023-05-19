@@ -25,6 +25,7 @@ void setMaxScore(/*String letter*/) {
   println("SCORE", score);
 }
 
+
 int findOverlappingPixels(PVector[] template, PVector[] studentDrawing, int x, int y/*String letter*/) {
   int overlap = 0;
   for (int i = x; i < board.n; i++) {
@@ -37,6 +38,10 @@ int findOverlappingPixels(PVector[] template, PVector[] studentDrawing, int x, i
   }
   return overlap;
 }
+
+//uses the max score and current overlap to find the actual student score
+
+
 
 void handleSubmit() {
   board.uploadData();
