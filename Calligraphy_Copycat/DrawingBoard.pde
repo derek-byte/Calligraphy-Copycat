@@ -115,7 +115,5 @@ class DrawingBoard {
       text("Score: " + this.maxScore, 10, 60 );
   }
   
-  void markerOutline() {
   
-  }
 }

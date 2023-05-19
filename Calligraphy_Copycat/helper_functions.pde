@@ -1,26 +1,36 @@
-float findMaxScore(String letter /*String letter*/) {
-  PVector[] template = getTxtFile("Teacher/"+letter+".txt");
-  PVector[] studentDrawing = getTxtFile("Student/"+letter+".txt");
+void setMaxScore(/*String letter*/) {
+  // Show red and green to show the similarities and differences
+  PVector[] template = getTxtFile("Teacher/"+board.letter+".txt");
+  PVector[] studentDrawing = getTxtFile("Student/"+board.letter+".txt");
+  
+  float[] t = getBoxBoundaries(template);
+  float[] s = getBoxBoundaries(studentDrawing);
   
   int maxOverlappingPixels = 0;
-  for (int i=0; i < board.n-template.length; i++) {
-    for (int j=0; j < board.n-template.length; j++) {
-      int overlappingPixels = findOverlappingPixels(template, studentDrawing);
+  for (int i=0; i < board.n-t[3]; i++) {
+    for (int j=0; j < board.n-t[2]; j++) {
+      println(i, j);
+      int overlappingPixels = findOverlappingPixels(template, studentDrawing, i, j);
       if (overlappingPixels > maxOverlappingPixels) {
+        println("AHHHHHHH", i, j);
         maxOverlappingPixels = overlappingPixels;
       }
     }
   }
   
+  //maxOverlappingPixels = findOverlappingPixels(template, studentDrawing, i, j);
+  println("MAX OVERLAPING", maxOverlappingPixels);
   float score = (maxOverlappingPixels / template.length) * 100;
-  return score;
+  board.maxScore = score;
+  println("SCORE", score);
 }
 
-int findOverlappingPixels(PVector[] template, PVector[] studentDrawing/*String letter*/) {
+int findOverlappingPixels(PVector[] template, PVector[] studentDrawing, int x, int y/*String letter*/) {
   int overlap = 0;
-  for (int i = 0; i < template.length; i++) {
-    for (int j = 0; j < studentDrawing.length; j++) {
-      if (studentDrawing[j] == template[i]) {
+  for (int i = x; i < board.n; i++) {
+    for (int j = y; j < board.n; j++) {
+      println(studentDrawing[j], template[i]);
+      if (studentDrawing[j].x == template[i].x+x && studentDrawing[j].y == template[i].y+y) {
         overlap++;
       }
     }
@@ -52,7 +62,7 @@ PVector[] getTxtFile(String file) {
   return drawnPoints;
 }
 
-PVector getCenterObject(PVector[] arr) {
+float[] getBoxBoundaries(PVector[] arr) {
   float minYCoord = arr[0].y;
   float minXCoord = arr[0].x;
   float maxYCoord = arr[0].y;
@@ -71,18 +81,16 @@ PVector getCenterObject(PVector[] arr) {
     }
   }
   
-  return new PVector(int((minXCoord+maxXCoord)/2), int((minYCoord+maxYCoord)/2));
-  
-  // Use this for both the teacher and student class. 
-  //return 
-  
-  //int xRange = int(maxXCoord - minXCoord);
-  //int yRange = int(maxYCoord - minYCoord);
-  //color[][] teacherArr = new color[xRange][yRange];
-  //for (int i=0; i < xRange; i++) {
-  //  for (int j=0; j < yRange; j++) {
-  //    //teacherA
-  //  }
-  //}
-  
+  float[] ans = {minYCoord, minXCoord, maxYCoord, maxXCoord};
+  return ans;
 }
+
+PVector getCenterObject(PVector[] arr) {
+  float[] b = getBoxBoundaries(arr);
+  return new PVector(int((b[1]+b[3])/2), int((b[0]+b[2])/2));
+}
+
+//void boxAroundObject(PVector[] arr) {
+//  float[] b = getBoxBoundaries(arr);
+  
+//}
