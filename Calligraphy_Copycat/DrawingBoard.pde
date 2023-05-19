@@ -33,7 +33,6 @@ class DrawingBoard {
   void clearDrawingBoard() {
     setInitialValues();
     copyNextGenerationToCurrentGeneration();
-    showTracer();
   }
   
   void clearTracer() {
@@ -44,6 +43,8 @@ class DrawingBoard {
         }
       }
     }
+    copyNextGenerationToCurrentGeneration();
+    println("hi");
   }
   
   //creates an initial blank board

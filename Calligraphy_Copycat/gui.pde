@@ -87,15 +87,20 @@ synchronized public void win_draw1() { //_CODE_:studentWindow:951950:
   backToMain = new GButton(studentWindow, 168, 269, 80, 30);
   backToMain.setText("Back to Menu");
   backToMain.addEventHandler(this, "backToMainPressed");
-  tracerButton = new GButton(studentWindow, 10, 240, 80, 30);
-  tracerButton.setText("Tracer");
-  tracerButton.addEventHandler(this, "tracerButtonClicked");
+  tracerCheck = new GCheckbox(studentWindow, 12, 240, 120, 20);
+  tracerCheck.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  tracerCheck.setText("show tracer");
+  tracerCheck.setOpaque(false);
+  tracerCheck.addEventHandler(this, "tracerBoxClicked");
+  tracerCheck.setSelected(false);
   studentWindow.loop();
 } //_CODE_:studentWindow:951950:
 
 //student selects letter to attempt to draw
 public void letterSelected(GDropList source, GEvent event) { //_CODE_:letterList:635450:
   board.letter = letterList.getSelectedText();
+  board.clearDrawingBoard();
+  board.clearTracer();
 } //_CODE_:letterList:635450:
 
 //colour selector to change marker colour
@@ -154,13 +159,16 @@ public void backToMainPressed(GButton source, GEvent event) { //_CODE_:backToMai
 } //_CODE_:backToMain:279625:
 
 //makes the teacher copy of this letter visible
-public void tracerButtonClicked(GButton source, GEvent event) { //_CODE_:tracerButton:824913:
-  board.showTracer =! board.showTracer;
-  println(board.showTracer);
-    if (board.showTracer == true) {
+public void tracerBoxClicked(GCheckbox source, GEvent event) { 
+  if (tracerCheck.isSelected() == true) {
     board.showTracer();
+  } 
+  if (tracerCheck.isSelected() == false) {
+    board.clearTracer();
   }
-} //_CODE_:tracerButton:824913:
+  println(tracerCheck.isSelected());
+}
+
 
 //creates the teacher window 
 synchronized public void win_draw2() { //_CODE_:teacherWindow:386192:
@@ -236,3 +244,4 @@ GDropList letterListTeach;
 GButton teacherClear; 
 GButton makeTemplate; 
 GButton backToMainTwo; 
+GCheckbox tracerCheck;
