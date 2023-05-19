@@ -5,47 +5,46 @@
  * designer and care should be taken when editing this file.
  * Only add/edit code inside the event handlers i.e. only
  * use lines between the matching comment tags. e.g.
- 
+
  void myBtnEvents(GButton button) { //_CODE_:button1:12356:
- // It is safe to enter your event code here
+     // It is safe to enter your event code here  
  } //_CODE_:button1:12356:
  
  * Do not rename this tab!
  * =========================================================
  */
 
-//creates the home page, this way it can be called at certain times only
-public void createHomePage() {
-    studentButton = new GButton(this, 206, 274, 100, 30);
-    studentButton.setText("Student");
-    studentButton.addEventHandler(this, "studentMode");
-    teacherButton = new GButton(this, 206, 342, 100, 30);
-    teacherButton.setText("Teacher");
-    teacherButton.addEventHandler(this, "teacherMode");
-    instructionButton = new GButton(this, 460, 471, 40, 30);
-    instructionButton.setText("?");
-    instructionButton.addEventHandler(this, "instructionButtonPressed");
+//creates the home page
+void createHomePage() {
+  studentButton = new GButton(this, 206, 274, 100, 30);
+  studentButton.setText("Student");
+  studentButton.addEventHandler(this, "studentMode");
+  teacherButton = new GButton(this, 206, 342, 100, 30);
+  teacherButton.setText("Teacher");
+  teacherButton.addEventHandler(this, "teacherMode");
+  instructionButton = new GButton(this, 460, 470, 40, 30);
+  instructionButton.setText("?");
+  instructionButton.addEventHandler(this, "instructionButtonPressed");
 }
 
-//deletes home page so that user can draw
-public void deleteHomePage() {
+//removes the home page buttons in drawing mode
+void deleteHomePage() {
   studentButton.dispose();
   teacherButton.dispose();
   instructionButton.dispose();
 }
 
-//student mode page
+//creates student window
 public void studentMode(GButton source, GEvent event) { //_CODE_:studentButton:712179:
   println("button1 - GButton >> GEvent." + event + " @ " + millis());
   board.isDrawing = true;
   win_draw1();
   deleteHomePage();
   userType = "Student";
-  board.showTracer();
   background(0);
 } //_CODE_:studentButton:712179:
 
-//teacher mode page
+//creates teacher window
 public void teacherMode(GButton source, GEvent event) { //_CODE_:teacherButton:875382:
   println("button2 - GButton >> GEvent." + event + " @ " + millis());
   board.isDrawing = true;
@@ -55,7 +54,7 @@ public void teacherMode(GButton source, GEvent event) { //_CODE_:teacherButton:8
   background(0);
 } //_CODE_:teacherButton:875382:
 
-//switches between instruction page and title page
+//shows instruction page
 public void instructionButtonPressed(GButton source, GEvent event) { //_CODE_:instructionButton:227920:
   println("instructionButton - GButton >> GEvent." + event + " @ " + millis());
   if (title == true) {
@@ -67,7 +66,7 @@ public void instructionButtonPressed(GButton source, GEvent event) { //_CODE_:in
   }
 } //_CODE_:instructionButton:227920:
 
-//draws the student window with all of it's associated functions
+//the actual student window mechanics
 synchronized public void win_draw1() { //_CODE_:studentWindow:951950:
   studentWindow = GWindow.getWindow(this, "StudentMode", 0, 0, 250, 300, JAVA2D);
   studentWindow.noLoop();
@@ -79,24 +78,27 @@ synchronized public void win_draw1() { //_CODE_:studentWindow:951950:
   colourList = new GDropList(studentWindow, 111, 24, 90, 140, 6, 10);
   colourList.setItems(loadStrings("list_944983"), 0);
   colourList.addEventHandler(this, "colourSelected");
-  clearButton = new GButton(studentWindow, 6, 188, 80, 30);
+  clearButton = new GButton(studentWindow, 10, 160, 80, 30);
   clearButton.setText("Clear");
   clearButton.addEventHandler(this, "clearButtonPressed");
-  Submit = new GButton(studentWindow, 103, 188, 80, 30);
+  Submit = new GButton(studentWindow, 10, 200, 80, 30);
   Submit.setText("Submit");
   Submit.addEventHandler(this, "submitButtonPressed");
   backToMain = new GButton(studentWindow, 168, 269, 80, 30);
   backToMain.setText("Back to Menu");
   backToMain.addEventHandler(this, "backToMainPressed");
+  tracerButton = new GButton(studentWindow, 10, 240, 80, 30);
+  tracerButton.setText("Tracer");
+  tracerButton.addEventHandler(this, "tracerButtonClicked");
   studentWindow.loop();
 } //_CODE_:studentWindow:951950:
 
-//student selects lettern to attempt to draw
+//student selects letter to attempt to draw
 public void letterSelected(GDropList source, GEvent event) { //_CODE_:letterList:635450:
   board.letter = letterList.getSelectedText();
 } //_CODE_:letterList:635450:
 
-//student selects colour
+//colour selector to change marker colour
 public void colourSelected(GDropList source, GEvent event) { //_CODE_:colourList:944983:
   String c = colourList.getSelectedText();
   println(c);
@@ -138,21 +140,29 @@ public void clearButtonPressed(GButton source, GEvent event) { //_CODE_:clearBut
   board.clearDrawingBoard();
 } //_CODE_:clearButton:330661:
 
-//submits students attempt
+//saves student attempt to student file
 public void submitButtonPressed(GButton source, GEvent event) { //_CODE_:Submit:288597:
   println("Submit - GButton >> GEvent." + event + " @ " + millis());
   handleSubmit();
-  setMaxScore();
 } //_CODE_:Submit:288597:
 
-//brings user back to the main menu
+//takes user back to home page
 public void backToMainPressed(GButton source, GEvent event) { //_CODE_:backToMain:279625:
   createHomePage();
   board.isDrawing = false;
   board.clearDrawingBoard();
 } //_CODE_:backToMain:279625:
 
-//creates the teacher mode window and all of the associated functions
+//makes the teacher copy of this letter visible
+public void tracerButtonClicked(GButton source, GEvent event) { //_CODE_:tracerButton:824913:
+  board.showTracer =! board.showTracer;
+  println(board.showTracer);
+    if (board.showTracer == true) {
+    board.showTracer();
+  }
+} //_CODE_:tracerButton:824913:
+
+//creates the teacher window 
 synchronized public void win_draw2() { //_CODE_:teacherWindow:386192:
   teacherWindow = GWindow.getWindow(this, "Teacher Mode", 0, 0, 250, 300, JAVA2D);
   teacherWindow.noLoop();
@@ -173,18 +183,18 @@ synchronized public void win_draw2() { //_CODE_:teacherWindow:386192:
   teacherWindow.loop();
 } //_CODE_:teacherWindow:386192:
 
-//teacher selects letter to make template for
+//teacher selects letter to create template for
 public void letterTeacherSelect(GDropList source, GEvent event) { //_CODE_:letterListTeach:826108:
   board.letter = letterListTeach.getSelectedText();
 } //_CODE_:letterListTeach:826108:
 
-//clears the teachers template
+//clears the drawing board
 public void teacherClearedPressed(GButton source, GEvent event) { //_CODE_:teacherClear:447221:
   println("teacherClear - GButton >> GEvent." + event + " @ " + millis());
   board.clearDrawingBoard();
 } //_CODE_:teacherClear:447221:
 
-//sets the drawing as a template for the selected letter
+//saves teachers drawing as template for the specific letter
 public void makeTemplatePressed(GButton source, GEvent event) { //_CODE_:makeTemplate:495839:
   println("makeTemplate - GButton >> GEvent." + event + " @ " + millis());
   board.uploadData();
@@ -197,27 +207,32 @@ public void backToMainTwoPressed(GButton source, GEvent event) { //_CODE_:backTo
   board.clearDrawingBoard();
 } //_CODE_:backToMainTwo:517947:
 
-//creates the basic GUI, sets initial home page as well
-public void createGUI() {
+
+
+//initiates the GUI and sets it to home page originally
+// autogenerated do not edit
+public void createGUI(){
   G4P.messagesEnabled(false);
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
+  surface.setTitle("Sketch Window");
   createHomePage();
 }
 
-// Variable declarations
+// Variable declarations 
 // autogenerated do not edit
-GButton studentButton;
-GButton teacherButton;
-GButton instructionButton;
+GButton studentButton; 
+GButton teacherButton; 
+GButton instructionButton; 
 GWindow studentWindow;
-GDropList letterList;
-GDropList colourList;
-GButton clearButton;
-GButton Submit;
-GButton backToMain;
+GDropList letterList; 
+GDropList colourList; 
+GButton clearButton; 
+GButton Submit; 
+GButton backToMain; 
+GButton tracerButton; 
 GWindow teacherWindow;
-GDropList letterListTeach;
-GButton teacherClear;
-GButton makeTemplate;
-GButton backToMainTwo;
+GDropList letterListTeach; 
+GButton teacherClear; 
+GButton makeTemplate; 
+GButton backToMainTwo; 
