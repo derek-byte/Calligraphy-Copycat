@@ -105,14 +105,12 @@ class DrawingBoard {
 
   //uploads data to the text files so that we can keep track of specific letter drawings
   void uploadData() {
-    print("UPLOADING DATA");
+    print("UPLOADING DATA", userType+"/"+this.letter+".txt");
     //printWriter.flush();
-    print(userType+"/"+this.letter+".txt");
     printWriter = createWriter(userType+"/"+this.letter+".txt");
     for (int i = 0; i < this.n; i++)
       for (int j = 0; j < this.n; j++) {
         if (cells[i][j] != black) {
-          print("HI");
           printWriter.println( i + "," + j );
         }
       }
