@@ -157,6 +157,7 @@ public void backToMainPressed(GButton source, GEvent event) { //_CODE_:backToMai
   createHomePage();
   board.isDrawing = false;
   board.clearDrawingBoard();
+  studentWindow.close();
 } //_CODE_:backToMain:279625:
 
 //makes the teacher copy of this letter visible
@@ -214,6 +215,7 @@ public void backToMainTwoPressed(GButton source, GEvent event) { //_CODE_:backTo
   createHomePage();
   board.isDrawing = false;
   board.clearDrawingBoard();
+  teacherWindow.close();
 } //_CODE_:backToMainTwo:517947:
 
 
