@@ -149,6 +149,7 @@ public void clearButtonPressed(GButton source, GEvent event) { //_CODE_:clearBut
 public void submitButtonPressed(GButton source, GEvent event) { //_CODE_:Submit:288597:
   println("Submit - GButton >> GEvent." + event + " @ " + millis());
   handleSubmit();
+  setMaxScore();
 } //_CODE_:Submit:288597:
 
 //takes user back to home page

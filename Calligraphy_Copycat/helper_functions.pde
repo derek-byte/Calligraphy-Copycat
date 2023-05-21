@@ -1,3 +1,18 @@
+color[][] txtToArray(float[] t, PVector[] txtArr) {
+  int xLength = int(t[3] - t[1]);
+  int yLength = int(t[2] - t[0]);
+  
+  color[][] arr = new color[xLength+1][yLength+1]; 
+  for (int i=0; i < txtArr.length; i++) {
+    int x = int(txtArr[i].x - t[1]);
+    int y = int(txtArr[i].y - t[0]);
+    
+    arr[x][y] = tracerGrey;
+  }
+  
+  return arr;
+}
+
 void setMaxScore(/*String letter*/) {
   // Show red and green to show the similarities and differences
   PVector[] template = getTxtFile("Teacher/"+board.letter+".txt");
@@ -6,23 +21,27 @@ void setMaxScore(/*String letter*/) {
   float[] t = getBoxBoundaries(template);
   float[] s = getBoxBoundaries(studentDrawing);
   
-  int maxOverlappingPixels = 0;
-  for (int i=0; i < board.n-t[3]; i++) {
-    for (int j=0; j < board.n-t[2]; j++) {
-      println(i, j);
-      int overlappingPixels = findOverlappingPixels(template, studentDrawing, i, j);
-      if (overlappingPixels > maxOverlappingPixels) {
-        println("AHHHHHHH", i, j);
-        maxOverlappingPixels = overlappingPixels;
-      }
+  color[][] teacher = txtToArray(t, template);
+  color[][] student = txtToArray(s, studentDrawing);
+  
+  int overlappingPixels = 0;
+  for (int i=0; i < max(int(t[3] - t[1]), int(s[3] - s[1])); i++) {
+    for (int j=0; j < max(int(t[2] - t[0]), int(s[2] - s[0])); j++) {
+      try {
+        if (teacher[i][j] == student[i][j]) {
+          overlappingPixels++;
+          //board.cellsNext[i][j] = color(0, 255, 0);
+        } else {
+          //board.cellsNext[i][j] = color(255, 0, 0);
+        }
+      } catch (IndexOutOfBoundsException e) {}
     }
   }
   
-  //maxOverlappingPixels = findOverlappingPixels(template, studentDrawing, i, j);
-  println("MAX OVERLAPING", maxOverlappingPixels);
-  float score = (maxOverlappingPixels / template.length) * 100;
+  int xLength = int(t[3] - t[1])+1;
+  int yLength = int(t[2] - t[0])+1;
+  float score = overlappingPixels * 100.00 / (xLength*yLength);
   board.maxScore = score;
-  println("SCORE", score);
 }
 
 
@@ -30,7 +49,6 @@ int findOverlappingPixels(PVector[] template, PVector[] studentDrawing, int x, i
   int overlap = 0;
   for (int i = x; i < board.n; i++) {
     for (int j = y; j < board.n; j++) {
-      println(studentDrawing[j], template[i]);
       if (studentDrawing[j].x == template[i].x+x && studentDrawing[j].y == template[i].y+y) {
         overlap++;
       }
@@ -38,10 +56,6 @@ int findOverlappingPixels(PVector[] template, PVector[] studentDrawing, int x, i
   }
   return overlap;
 }
-
-//uses the max score and current overlap to find the actual student score
-
-
 
 void handleSubmit() {
   board.uploadData();
