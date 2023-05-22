@@ -56,14 +56,19 @@ public void teacherMode(GButton source, GEvent event) { //_CODE_:teacherButton:8
 
 //shows instruction page
 public void instructionButtonPressed(GButton source, GEvent event) { //_CODE_:instructionButton:227920:
-  println("instructionButton - GButton >> GEvent." + event + " @ " + millis());
+  println("instructionButton - GButton >> GEvent." + event + " @ " + millis(), title);
+  source.setText("<");
   if (title == true) {
+    studentButton.setEnabled(false);
+    studentButton.setVisible(false);
+    teacherButton.setEnabled(false);
+    teacherButton.setVisible(false);
     instructionsPage();
-    title = false;
-  } else if (title == false) {
+  } else {
     loop();
-    title = true;
+    createHomePage();
   }
+  title = !title;
 } //_CODE_:instructionButton:227920:
 
 //the actual student window mechanics
