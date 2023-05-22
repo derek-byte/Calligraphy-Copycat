@@ -35,6 +35,7 @@ class DrawingBoard {
     copyNextGenerationToCurrentGeneration();
   }
   
+  //clears the tracer from the screen, keeps user drawing
   void clearTracer() {
     for (int i=0; i<this.n; i++) {
       for (int j=0; j<this.n; j++) {

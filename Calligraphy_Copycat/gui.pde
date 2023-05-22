@@ -181,7 +181,7 @@ public void tracerBoxClicked(GCheckbox source, GEvent event) {
 synchronized public void win_draw2() { //_CODE_:teacherWindow:386192:
   teacherWindow = GWindow.getWindow(this, "Teacher Mode", 0, 0, 250, 300, JAVA2D);
   teacherWindow.noLoop();
-  teacherWindow.setActionOnClose(G4P.KEEP_OPEN);
+  teacherWindow.setActionOnClose(G4P.CLOSE_WINDOW);
   teacherWindow.addDrawHandler(this, "win_draw2");
   letterListTeach = new GDropList(teacherWindow, 9, 19, 90, 140, 6, 10);
   letterListTeach.setItems(loadStrings("list_826108"), 0);
@@ -221,6 +221,7 @@ public void backToMainTwoPressed(GButton source, GEvent event) { //_CODE_:backTo
   board.isDrawing = false;
   board.clearDrawingBoard();
   teacherWindow.close();
+  println("hello");
 } //_CODE_:backToMainTwo:517947:
 
 
