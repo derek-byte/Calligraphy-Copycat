@@ -133,7 +133,7 @@ class DrawingBoard {
     text("Mode:" + userType, 10, 40 );
 
     if (userType.equals("Student"))
-      text("Score: " + this.maxScore, 10, 60 );
+      text("Score: " + round(this.maxScore) + "%", 10, 60 );
   }
 
   void markerOutline() {
