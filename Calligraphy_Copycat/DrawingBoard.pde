@@ -112,7 +112,7 @@ class DrawingBoard {
     printWriter = createWriter(userType+"/"+this.letter+".txt");
     for (int i = 0; i < this.n; i++)
       for (int j = 0; j < this.n; j++) {
-        if (cells[i][j] != black) {
+        if (cells[i][j] != black && cells[i][j] != tracerGrey) {
           printWriter.println( i + "," + j );
         }
       }
