@@ -149,6 +149,7 @@ public void colourSelected(GDropList source, GEvent event) { //_CODE_:colourList
 public void clearButtonPressed(GButton source, GEvent event) { //_CODE_:clearButton:330661:
   println("clearButton - GButton >> GEvent." + event + " @ " + millis());
   board.clearDrawingBoard();
+  board.maxScore = 0;
 } //_CODE_:clearButton:330661:
 
 //saves student attempt to student file
