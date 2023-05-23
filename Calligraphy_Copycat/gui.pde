@@ -42,6 +42,7 @@ public void studentMode(GButton source, GEvent event) { //_CODE_:studentButton:7
   deleteHomePage();
   userType = "Student";
   background(0);
+  board.clearDrawingBoard();
 } //_CODE_:studentButton:712179:
 
 //creates teacher window
@@ -52,6 +53,7 @@ public void teacherMode(GButton source, GEvent event) { //_CODE_:teacherButton:8
   deleteHomePage();
   userType = "Teacher";
   background(0);
+  board.clearDrawingBoard();
 } //_CODE_:teacherButton:875382:
 
 //shows instruction page
@@ -66,6 +68,7 @@ public void instructionButtonPressed(GButton source, GEvent event) { //_CODE_:in
     instructionsPage();
   } else {
     loop();
+    instructionButton.dispose();
     createHomePage();
   }
   title = !title;
@@ -105,7 +108,7 @@ synchronized public void win_draw1() { //_CODE_:studentWindow:951950:
 public void letterSelected(GDropList source, GEvent event) { //_CODE_:letterList:635450:
   board.letter = letterList.getSelectedText();
   board.clearDrawingBoard();
-  board.clearTracer();
+  board.showTracer();
   board.maxScore = 0;
 } //_CODE_:letterList:635450:
 
@@ -173,6 +176,7 @@ public void tracerBoxClicked(GCheckbox source, GEvent event) {
   if (tracerCheck.isSelected() == false) {
     board.clearTracer();
   }
+  board.isShowTracer = !board.isShowTracer;
   println(tracerCheck.isSelected());
 }
 

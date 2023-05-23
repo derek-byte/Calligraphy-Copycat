@@ -9,7 +9,7 @@ class DrawingBoard {
   color markerColor;
   boolean isDrawing;
   boolean uploadData;
-  boolean showTracer;
+  boolean isShowTracer;
 
   String letter;
   float maxScore = 0;
@@ -26,13 +26,17 @@ class DrawingBoard {
     this.uploadData = false;
     this.letter = "A";
     this.maxScore = 0;
-    this.showTracer = true;
+    this.isShowTracer = false;
   }
 
   //clears the board, used to update board
   void clearDrawingBoard() {
     setInitialValues();
     copyNextGenerationToCurrentGeneration();
+    
+    if (this.isShowTracer && userType.equals("Student")) {
+      showTracer();
+    } 
   }
   
   //clears the tracer from the screen, keeps user drawing
@@ -45,7 +49,6 @@ class DrawingBoard {
       }
     }
     copyNextGenerationToCurrentGeneration();
-    println("hi");
   }
   
   //creates an initial blank board
@@ -108,7 +111,6 @@ class DrawingBoard {
   //uploads data to the text files so that we can keep track of specific letter drawings
   void uploadData() {
     print("UPLOADING DATA", userType+"/"+this.letter+".txt");
-    //printWriter.flush();
     printWriter = createWriter(userType+"/"+this.letter+".txt");
     for (int i = 0; i < this.n; i++)
       for (int j = 0; j < this.n; j++) {

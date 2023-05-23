@@ -62,7 +62,6 @@ void handleSubmit() {
 }
 
 PVector[] getTxtFile(String file) {
-  print("1 AHAHAHAHHA");
   String[] lines = loadStrings(file);
   int numPoints = lines.length;
   
