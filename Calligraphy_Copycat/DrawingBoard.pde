@@ -121,10 +121,6 @@ class DrawingBoard {
     printWriter.close();
   }
 
-  void changeColor(color clr) {
-    this.markerColor = clr;
-  }
-
   //all of the statistics shown in the top left corner
   void showStats() {
     fill(250);

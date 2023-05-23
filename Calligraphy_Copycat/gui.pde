@@ -54,6 +54,8 @@ public void teacherMode(GButton source, GEvent event) { //_CODE_:teacherButton:8
   userType = "Teacher";
   background(0);
   board.clearDrawingBoard();
+  board.markerColor = color(255);
+
 } //_CODE_:teacherButton:875382:
 
 //shows instruction page
