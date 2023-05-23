@@ -110,8 +110,10 @@ synchronized public void win_draw1() { //_CODE_:studentWindow:951950:
 public void letterSelected(GDropList source, GEvent event) { //_CODE_:letterList:635450:
   board.letter = letterList.getSelectedText();
   board.clearDrawingBoard();
-  board.showTracer();
   board.maxScore = 0;
+  if (tracerCheck.isSelected() == true) {
+   board.showTracer(); 
+  }
 } //_CODE_:letterList:635450:
 
 //colour selector to change marker colour
