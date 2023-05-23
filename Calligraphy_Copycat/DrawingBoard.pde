@@ -14,7 +14,7 @@ class DrawingBoard {
   String letter;
   float maxScore = 0;
 
-  //constructor method
+  // Constructor 
   DrawingBoard() {
     this.n = 100;
     this.cells = new color[this.n][this.n];
@@ -29,7 +29,7 @@ class DrawingBoard {
     this.isShowTracer = false;
   }
 
-  //clears the board, used to update board
+  // Clears the board, used to update board
   void clearDrawingBoard() {
     setInitialValues();
     copyNextGenerationToCurrentGeneration();
@@ -39,7 +39,7 @@ class DrawingBoard {
     } 
   }
   
-  //clears the tracer from the screen, keeps user drawing
+  // Clears the tracer from the screen, keeps user drawing
   void clearTracer() {
     for (int i=0; i<this.n; i++) {
       for (int j=0; j<this.n; j++) {
@@ -51,7 +51,7 @@ class DrawingBoard {
     copyNextGenerationToCurrentGeneration();
   }
   
-  //creates an initial blank board
+  // Creates an initial blank board
   void setInitialValues() {
     for (int i = 0; i < this.n; i++ ) {
       for (int j = 0; j < this.n; j++) {
@@ -61,10 +61,11 @@ class DrawingBoard {
     }
   }
 
-  //shows the letter template on the drawing board
+  // Shows the letter template on the drawing board
   void showTracer() {
     PVector[] teacherArr = getTxtFile("Teacher/"+this.letter+".txt");
 
+    // Centers the tracer
     PVector midPoint = getCenterObject(teacherArr);
     int xShift = int(midPoint.x)-int(n/2);
     int yShift = int(midPoint.y) - int(n/2);
@@ -108,7 +109,7 @@ class DrawingBoard {
     }
   }
 
-  //uploads data to the text files so that we can keep track of specific letter drawings
+  // Uploads data to the text files so that we can keep track of specific letter drawings
   void uploadData() {
     print("UPLOADING DATA", userType+"/"+this.letter+".txt");
     printWriter = createWriter(userType+"/"+this.letter+".txt");
@@ -125,7 +126,7 @@ class DrawingBoard {
     this.markerColor = clr;
   }
 
-  //all of the statistics shown in the top left corner
+  // All of the statistics shown in the top left corner
   void showStats() {
     fill(250);
     textAlign(LEFT);
