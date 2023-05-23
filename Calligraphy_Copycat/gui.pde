@@ -106,6 +106,7 @@ public void letterSelected(GDropList source, GEvent event) { //_CODE_:letterList
   board.letter = letterList.getSelectedText();
   board.clearDrawingBoard();
   board.clearTracer();
+  board.maxScore = 0;
 } //_CODE_:letterList:635450:
 
 //colour selector to change marker colour
