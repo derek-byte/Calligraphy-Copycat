@@ -80,7 +80,7 @@ synchronized public void win_draw1() { //_CODE_:studentWindow:951950:
   letterList = new GDropList(studentWindow, 5, 22, 89, 140, 6, 10);
   letterList.setItems(loadStrings("list_635450"), 0);
   letterList.addEventHandler(this, "letterSelected");
-  colourList = new GDropList(studentWindow, 111, 24, 90, 140, 6, 10);
+  colourList = new GDropList(studentWindow, 111, 22, 90, 140, 6, 10);
   colourList.setItems(loadStrings("list_944983"), 0);
   colourList.addEventHandler(this, "colourSelected");
   clearButton = new GButton(studentWindow, 10, 160, 80, 30);
@@ -92,7 +92,7 @@ synchronized public void win_draw1() { //_CODE_:studentWindow:951950:
   backToMain = new GButton(studentWindow, 168, 269, 80, 30);
   backToMain.setText("Back to Menu");
   backToMain.addEventHandler(this, "backToMainPressed");
-  tracerCheck = new GCheckbox(studentWindow, 12, 240, 120, 20);
+  tracerCheck = new GCheckbox(studentWindow, 10, 240, 120, 20);
   tracerCheck.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   tracerCheck.setText("show tracer");
   tracerCheck.setOpaque(false);
@@ -190,7 +190,7 @@ synchronized public void win_draw2() { //_CODE_:teacherWindow:386192:
   teacherClear = new GButton(teacherWindow, 13, 181, 80, 30);
   teacherClear.setText("Clear");
   teacherClear.addEventHandler(this, "teacherClearedPressed");
-  makeTemplate = new GButton(teacherWindow, 15, 228, 80, 30);
+  makeTemplate = new GButton(teacherWindow, 13, 228, 80, 30);
   makeTemplate.setText("Make Template");
   makeTemplate.addEventHandler(this, "makeTemplatePressed");
   backToMainTwo = new GButton(teacherWindow, 169, 269, 80, 30);
